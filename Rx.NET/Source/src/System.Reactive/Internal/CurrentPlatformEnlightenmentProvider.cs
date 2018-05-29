@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace System.Reactive.PlatformServices
 {
@@ -19,6 +20,10 @@ namespace System.Reactive.PlatformServices
     [EditorBrowsable(EditorBrowsableState.Never)]
     public class CurrentPlatformEnlightenmentProvider : IPlatformEnlightenmentProvider
     {
+#if NETSTANDARD2_0
+        private readonly static bool _isWasm = RuntimeInformation.IsOSPlatform(OSPlatform.Create("WEBASSEMBLY"));
+#endif
+
         /// <summary>
         /// (Infastructure) Tries to gets the specified service.
         /// </summary>
@@ -37,12 +42,28 @@ namespace System.Reactive.PlatformServices
 #if !NO_THREAD || WINDOWS
             if (t == typeof(IConcurrencyAbstractionLayer))
             {
-                return (T)(object)new ConcurrencyAbstractionLayerImpl();
+#if NETSTANDARD2_0
+                if (_isWasm)
+                {
+                    return (T)(object)new ConcurrencyAbstractionLayerWasmImpl();
+                }
+                else
+#endif
+                {
+                    return (T)(object)new ConcurrencyAbstractionLayerImpl();
+                }
             }
 #endif
 
             if (t == typeof(IScheduler) && args != null)
             {
+#if NETSTANDARD2_0
+                if (_isWasm)
+                {
+                    return (T)(object)WasmScheduler.Default;
+                }
+#endif
+
                 switch ((string)args[0])
                 {
 #if !WINDOWS && !NO_THREAD
