@@ -10,7 +10,7 @@
     <PackageLicenseUrl>http://go.microsoft.com/fwlink/?LinkID=261272</PackageLicenseUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>    
     <DebugType>embedded</DebugType>
-    <SignAssembly>true</SignAssembly>
+    <!--<SignAssembly>true</SignAssembly>-->
     <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)ReactiveX.snk</AssemblyOriginatorKeyFile>
     <NoWarn>$(NoWarn);1701;1702;CS1591</NoWarn>
     <DefaultLanguage>en-US</DefaultLanguage>
