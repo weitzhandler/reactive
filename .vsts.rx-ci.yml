@@ -1,13 +1,10 @@
-trigger:
-- master
-- develop
+phases:
+- phase: VS_Latest
+  variables:
+    NUGET_PACKAGES: $(Agent.WorkFolder)\.nuget
+    NUGET_HTTP_CACHE_PATH: $(Agent.WorkFolder)\.nuget-http-cache
 
-queue: Hosted VS2017
-
-variables: 
-  BuildConfiguration: Release
-  BuildPlatform: Any CPU
-
+  steps:
   - task: GitVersion@3
     inputs:
       updateAssemblyInfo: false   
