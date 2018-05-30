@@ -49,8 +49,8 @@
   <!-- UWP -->
   <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.14393'  or '$(TargetFramework)'=='xamarinios10' or '$(TargetFramework)'=='MonoAndroid80' or '$(TargetFramework)' == 'netstandard2.0' ">      
     <PackageReference Include="System.ComponentModel" Version="4.3.0" />
-    <PackageReference Include="System.Dynamic.Runtime" Version="4.0.11" />
-    <PackageReference Include="System.Linq.Queryable" Version="4.0.1" />
+    <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
+    <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
     <Compile Include="Platforms\UWP\**\*.cs" />
   </ItemGroup>
   
