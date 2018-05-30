@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard1.3;net45;net46;uap10.0.14393;xamarinios10;MonoAndroid80</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net45;net46;uap10.0.14393;xamarinios10;MonoAndroid80</TargetFrameworks>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>       
     <PackageTags>Rx;Reactive;Extensions;Observable;LINQ;Events</PackageTags>
     <Description>Reactive Extensions (Rx) for .NET  Platform Support</Description>
@@ -47,7 +47,7 @@
   </ItemGroup>
 
   <!-- UWP -->
-  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.14393'  or '$(TargetFramework)'=='xamarinios10' or '$(TargetFramework)'=='MonoAndroid80' or '$(TargetFramework)' == 'netstandard2.0' ">      
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.14393' or '$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)'=='xamarinios10' or '$(TargetFramework)'=='MonoAndroid80' ">      
     <PackageReference Include="System.ComponentModel" Version="4.3.0" />
     <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
     <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
@@ -55,7 +55,7 @@
   </ItemGroup>
   
   <!-- Windows includes for Desktop and UWP -->
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' or '$(TargetFramework)' == 'net46' or '$(TargetFramework)' == 'uap10.0.14393' or '$(TargetFramework)'=='xamarinios10' or '$(TargetFramework)'=='MonoAndroid80'">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' or '$(TargetFramework)' == 'net46' or '$(TargetFramework)' == 'uap10.0.14393' or '$(TargetFramework)'=='xamarinios10' or '$(TargetFramework)'=='MonoAndroid80' or '$(TargetFramework)' == 'netstandard2.0' ">
     <Compile Include="Platforms\Windows\**\*.cs" />
     <EmbeddedResource Include="Platforms\Windows\**\*.resx" />
     <Compile Update="Platforms\Windows\Strings_WindowsThreading.Designer.cs" DesignTime="true" AutoGen="true" DependentUpon="Strings_WindowsThreading.resx" />
@@ -70,11 +70,8 @@
     <Compile Include="Platforms\Desktop\**\*.cs" />
   </ItemGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='xamarinios10' or '$(TargetFramework)'=='MonoAndroid80'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='xamarinios10' or '$(TargetFramework)'=='MonoAndroid80' or '$(TargetFramework)'=='netstandard2.0'">
     <DefineConstants>$(DefineConstants);HAS_WINRT;PREFER_ASYNC;HAS_TPL46;NO_REMOTING;WINDOWS;HAS_UNO</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
-    <DefineConstants>$(DefineConstants);WINDOWS;HAS_UNO</DefineConstants>
   </PropertyGroup>
 
 </Project>
