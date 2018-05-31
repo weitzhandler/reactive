@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net45;netstandard1.3</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Uno.System.Reactive.Interfaces</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

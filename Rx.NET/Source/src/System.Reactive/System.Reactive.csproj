@@ -4,6 +4,8 @@
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>       
     <PackageTags>Rx;Reactive;Extensions;Observable;LINQ;Events</PackageTags>
     <Description>Reactive Extensions (Rx) for .NET</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>Uno.System.Reactive</PackageId>
   </PropertyGroup>
 
 
