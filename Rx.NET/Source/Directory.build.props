@@ -25,7 +25,7 @@
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.0" PrivateAssets="All" />
   </ItemGroup>   
   
-  <ItemGroup>
+  <ItemGroup Condition="'$(BUILD_REPOSITORY_PROVIDER)'==''">
     <PackageReference Include="Nerdbank.GitVersioning" Version="2.1.23" PrivateAssets="all" />
   </ItemGroup>
 
