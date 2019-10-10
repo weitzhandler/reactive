@@ -2,12 +2,17 @@
 
 This port allows for [Uno-based apps](http://platform.uno) to use [Reactive Extensions for .NET](https://github.com/dotnet/reactive) on Windows, iOS, Android and WebAssembly.
 
-The following nuget packages are available:
+<strike>The following nuget packages are available:
 - [Uno.System.Reactive](https://www.nuget.org/packages/Uno.System.Reactive/)
 - [Uno.System.Reactive.Interfaces](https://www.nuget.org/packages/Uno.System.Reactive.Interfaces/)
 - [Uno.System.Reactive.Platforms](https://www.nuget.org/packages/Uno.System.Reactive.Platforms/)
 
 This port re-introduces the Platforms package, to allow for an easier re-targeting of additional platforms, particularly netstandard 2.0 for WebAssembly.
+</strike>
+
+# Uno has now official Rx support
+
+The regular Rx packages should be referenced directly, but in the WASM project, the [`Reactive.Wasm`](https://www.nuget.org/packages/Reactive.Wasm) package should be added as well, and be [manually enabled](https://github.com/reactiveui/Reactive.Wasm/blob/master/README.md).
 
 Reactive Extensions
 ======================
